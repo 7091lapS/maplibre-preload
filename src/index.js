@@ -40,6 +40,13 @@ if (_lib !== undefined) {
     };
     _lib.Map.prototype.cachedEaseTo = cachedeaseto;
 
+    const cachedfitbounds = function (options) {
+        const o = Object.assign({}, options, { type: 'fitBounds' }, this._context(options));
+        this._precache(o);
+        if (!!options.run) return this.fitBounds(o);
+    };
+    _lib.Map.prototype.cachedFitBounds = cachedfitbounds;
+
     const cachedflyto = function (options) {
         // FIXME: lazy hack as this property is needed for context()
         options.type = 'fly';
